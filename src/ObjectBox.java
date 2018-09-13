@@ -13,8 +13,6 @@ public class ObjectBox extends MathBox {
         TreeSet<Number> numbers=new TreeSet<>();
 
 
-
-
         TreeSet<Integer> integer = new TreeSet<>();
         BigDecimal bigDecimal = new BigDecimal(53243);
         Float myFloat = new Float(4.6f);
