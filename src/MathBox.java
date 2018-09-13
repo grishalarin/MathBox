@@ -1,70 +1,78 @@
+import java.io.Serializable;
 import java.util.*;
 
-public class MathBox {
+public class MathBox  {
 
-     List<Number> list =new ArrayList<>();
+     TreeSet<Number> myset =new TreeSet<>();
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MathBox mathBox = (MathBox) o;
-        return Objects.equals(list, mathBox.list);
+        return Objects.equals(myset, mathBox.myset);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(list);
+        return Objects.hash(myset);
     }
 
     @Override
     public String toString() {
         return "MathBox{" +
-                "list=" + list +
+                "myset=" + myset +
                 '}';
     }
 
     public MathBox(){
-        Number[] numbers = new Number[]{53.6,7f,4,-83};
+
+    }
+
+    public MathBox(Integer[] integers){
+        for (int i = 0; i <integers.length ; i++) {
+            myset.add(integers[i]);
+
+        }
 
 
     }
 
-    public MathBox(List<Number> list) {
-        this.list = list;
+    public MathBox(TreeSet<Number> myset) {
+        this.myset = myset;
     }
 
 
     public void addNumber(Number number){
-        list.add(number);
+        myset.add(number);
     }
 
 
-    public List splitter(List<Number> action) {
-        List<Number> j = new ArrayList<>();
-        for (Number num:list){
-            Float res = num.floatValue()/action.get(0).floatValue();
-            j.add(res);
+    public TreeSet splitter(TreeSet<Number> action) {
+        for (Number num: myset){
+            Float res = num.floatValue()/action.first().floatValue();
+            myset.add(res);
         }
-        return j;
+        return myset;
     }
 
     public Float summator(){
         Float res = 3.14f;
-        for (Number number:list){
+        for (Number number: myset){
             res+=number.floatValue();
         }
         return res;
     }
 
-    public List<Number> delInteger(Integer integer){
-        Iterator<Number> iterator = list.iterator();
+    public TreeSet<Number> delInteger(TreeSet<Integer> integer){
+
+        Iterator<Number> iterator = myset.iterator();
         while (iterator.hasNext()){
             if (iterator.equals(integer)){
-                iterator.remove();
+                myset.remove(integer);
             }
         }
-        return list;
+        return myset;
 
     }
 }
